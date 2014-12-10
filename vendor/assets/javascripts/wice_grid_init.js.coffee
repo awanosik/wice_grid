@@ -65,17 +65,23 @@ moveDateBoundIfInvalidPeriod = (dataFieldNameWithTheOtherDatepicker, datepickerH
 # datepicker logic
 setupDatepicker = ->
   # check if datepicker is loaded
-  if $('.wice-grid-container input.check-for-datepicker[type=hidden], .wg-detached-filter input.check-for-datepicker[type=hidden]').length != 0
-    unless $.datepicker
-      alert """Seems like you do not have jQuery datepicker (http://jqueryui.com/demos/datepicker/)
-        installed. Either install it or set Wice::Defaults::HELPER_STYLE to :standard in
-        wice_grid_config.rb in order to use standard Rails date helpers
-      """
+  #if $('.wice-grid-container input.check-for-datepicker[type=hidden], .wg-detached-filter input.check-for-datepicker[type=hidden]').length != 0
+    #unless $.datetimepicker
+    # alert """Seems like you don't have jQuery datepicker (http://jqueryui.com/demos/datepicker/)
+    #    installed. Either install it or set Wice::Defaults::HELPER_STYLE to :standard in
+    #    wice_grid_config.rb in order to use standard Rails date helpers
+    #  """
 
   # setting up the locale for datepicker
   if locale = $('.wice-grid-container input[type=hidden], .wg-detached-filter input[type=hidden]').data('locale')
     $.datepicker.setDefaults($.datepicker.regional[locale]);
 
+		
+  $('.datetimepicker').datetimepicker ->
+	  format: 'Y-m-d'
+	  timepicker: false
+	  onSelectDate ->
+		  $('.datetimepicker').trigger(eventToTriggerOnChange)
 
   $('.wice-grid-container .date-label, .wg-detached-filter .date-label').each  (index, removeLink) ->
     datepickerHiddenField  = $('#' + $(removeLink).data('dom-id'))
@@ -95,42 +101,42 @@ setupDatepicker = ->
     dateFormat = datepickerHiddenField.data('date-format')
 
     yearRange = datepickerHiddenField.data('date-year-range')
-
+		
     # datepicker constructor
-    datepickerHiddenField.datepicker
-      firstDay:        1
-      showOn:          "button"
-      dateFormat:      dateFormat
-      buttonImage:     datepickerHiddenField.data('button-image')
-      buttonImageOnly: true
-      buttonText:      datepickerHiddenField.data('button-text')
-      changeMonth:     true
-      changeYear:      true
-      yearRange:       yearRange
+    datepickerHiddenField.datetimepicker
+      #firstDay:        1
+      #showOn:          "button"
+      #dateFormat:      dateFormat
+      #buttonImage:     datepickerHiddenField.data('button-image')
+      #buttonImageOnly: true
+      #buttonText:      datepickerHiddenField.data('button-text')
+      #changeMonth:     true
+      #changeYear:      true
+      #yearRange:       yearRange
 
-      onSelect: (dateText, inst) ->
+      #onSelect: (dateText, inst) ->
 
-        selectedDate = $(this).datepicker("getDate")
+        #selectedDate = $(this).datetimepicker("getDate")
 
-        moveDateBoundIfInvalidPeriod(
-          'the-other-datepicker-id-to',
-          datepickerHiddenField,
-          selectedDate,
-          dateFormat,
-          (theOther, selected)-> theOther < selected
-        )
+        #moveDateBoundIfInvalidPeriod(
+        #  'the-other-datepicker-id-to',
+        #  datepickerHiddenField,
+        #  selectedDate,
+        #  dateFormat,
+        #  (theOther, selected)-> theOther < selected
+        #)
 
-        moveDateBoundIfInvalidPeriod(
-          'the-other-datepicker-id-from',
-          datepickerHiddenField,
-          selectedDate,
-          dateFormat,
-          (theOther, selected)-> theOther > selected
-        )
+        #moveDateBoundIfInvalidPeriod(
+        #  'the-other-datepicker-id-from',
+        #  datepickerHiddenField,
+        #  selectedDate,
+        #  dateFormat,
+        #  (theOther, selected)-> theOther > selected
+        #)
 
-        $(that).html(dateText)
-        if eventToTriggerOnChange
-         datepickerHiddenField.trigger(eventToTriggerOnChange)
+        #$(that).html(dateText)
+        #if eventToTriggerOnChange
+        # datepickerHiddenField.trigger(eventToTriggerOnChange)
 
 
 

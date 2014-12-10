@@ -46,16 +46,9 @@ module Wice #:nodoc:
       end
 
 
-      date_picker = hidden_field_tag(calendar_data.name, calendar_data.date_string, hidden_field_tag_options) + ' ' +
-
-        link_to(calendar_data.date_string,
-          '#',
-          :id => calendar_data.date_span_id,
-          :class => 'date-label',
-          :title => ::Wice::NlMessage['date_string_tooltip'],
-          'data-dom-id' => calendar_data.dom_id
-        )
-
+      date_picker = text_field_tag(calendar_data.name, calendar_data.date_string, {:class => 'datetimepicker form-control'})
+			
+			
       "<span id=\"#{calendar_data.datepicker_placeholder_id}\">#{date_picker}</span>"
     end
 

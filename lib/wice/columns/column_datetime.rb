@@ -72,7 +72,7 @@ module Wice
 
         html2 = date_calendar_jquery calendar_data_to
 
-        %!<div class="date-filter">#{html1}<br/>#{html2}</div>!
+        %!<div class="date-filter"><label class="date-filter-from">From: #{html1}</label><label class="date-filter-to"> To: #{html2}</label></div>!
       end
 
 
