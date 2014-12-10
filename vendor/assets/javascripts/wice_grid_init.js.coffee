@@ -76,12 +76,9 @@ setupDatepicker = ->
   if locale = $('.wice-grid-container input[type=hidden], .wg-detached-filter input[type=hidden]').data('locale')
     $.datepicker.setDefaults($.datepicker.regional[locale]);
 
-		
-  $('.datetimepicker').datetimepicker ->
+  $('.datetimepicker').datetimepicker
 	  format: 'Y-m-d'
 	  timepicker: false
-	  onSelectDate ->
-		  $('.datetimepicker').trigger(eventToTriggerOnChange)
 
   $('.wice-grid-container .date-label, .wg-detached-filter .date-label').each  (index, removeLink) ->
     datepickerHiddenField  = $('#' + $(removeLink).data('dom-id'))
@@ -103,7 +100,7 @@ setupDatepicker = ->
     yearRange = datepickerHiddenField.data('date-year-range')
 		
     # datepicker constructor
-    datepickerHiddenField.datetimepicker
+    #datepickerHiddenField.datetimepicker
       #firstDay:        1
       #showOn:          "button"
       #dateFormat:      dateFormat
