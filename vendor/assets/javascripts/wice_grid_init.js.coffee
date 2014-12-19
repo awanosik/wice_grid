@@ -76,9 +76,10 @@ setupDatepicker = ->
   if locale = $('.wice-grid-container input[type=hidden], .wg-detached-filter input[type=hidden]').data('locale')
     $.datepicker.setDefaults($.datepicker.regional[locale]);
 
-  $('.datetimepicker').datetimepicker
-	  format: 'Y-m-d'
-	  timepicker: false
+  $('.datetimepicker').each ->
+    $(this).datetimepicker
+	    format: 'Y-m-d'
+	    timepicker: false
 
   $('.wice-grid-container .date-label, .wg-detached-filter .date-label').each  (index, removeLink) ->
     datepickerHiddenField  = $('#' + $(removeLink).data('dom-id'))
