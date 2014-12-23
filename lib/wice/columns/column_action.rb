@@ -33,13 +33,14 @@ module Wice
 
       def name  #:nodoc:
         return '' unless @select_all_buttons
-
-        content_tag(:div, '',
-          class: 'clickable select-all',
-          title: NlMessage['select_all']) + ' ' +
-        content_tag(:div, '',
-          class: 'clickable deselect-all',
-          title: NlMessage['deselect_all'])
+				
+				check_box_tag 'select_all', '1'
+        #content_tag(:div, '',
+        #  class: 'clickable select-all',
+        #  title: NlMessage['select_all']) + ' ' +
+        #content_tag(:div, '',
+        #  class: 'clickable deselect-all',
+        #  title: NlMessage['deselect_all'])
       end
 
     end
