@@ -113,7 +113,7 @@ module Wice #:nodoc:
 
       # fields defined from the options parameter
       FIELDS = [:attribute, :name, :html, :filter, :model, :allow_multiple_selection,
-                :in_html, :in_csv, :helper_style, :table_alias, :custom_order, :detach_with_id, :ordering, :auto_reload]
+                :in_html, :in_csv, :helper_style, :table_alias, :custom_order, :detach_with_id, :ordering, :auto_reload, :values]
 
       attr_accessor *FIELDS
 
@@ -121,12 +121,13 @@ module Wice #:nodoc:
 
       attr_reader :contains_a_text_input
 
-      def initialize(block, options, grid_obj, tname, mtable, cfilter, view)  #:nodoc:
+      def initialize(block, options, grid_obj, tname, mtable, cfilter, view, values)  #:nodoc:
         self.cell_rendering_block = block
         self.grid           = grid_obj
         self.table_name     = tname
         self.main_table     = mtable
         self.custom_filter  = cfilter
+		self.values  = values
         @view = view
 
         FIELDS.each do |field|

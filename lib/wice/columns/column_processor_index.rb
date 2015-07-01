@@ -13,7 +13,8 @@ module Wice #:nodoc:
       :float    , 'column_float',
       :decimal  , 'column_float',
       :custom   , 'column_custom_dropdown',  # Special processor for custom filter columns
-      :boolean  , 'column_boolean'
+      :boolean  , 'column_boolean',
+	  :checkbox_range, 'column_checkbox_range'
     ]
   end
 end

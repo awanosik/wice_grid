@@ -299,7 +299,8 @@ module Wice
         filter:                      true,
         filter_type:                 nil,
         table_alias:                 nil,
-        html:                        {}
+        html:                        {},
+		values:						 nil
       }
 
       opts.assert_valid_keys(options.keys)
@@ -384,8 +385,9 @@ module Wice
         end # custom_filter
 
       end # attribute
-
-      vc = klass.new(block, options, @grid, table_name, main_table, custom_filter, @view)
+	  
+	  @values = options[:values].present? ? options[:values].present? : []
+      vc = klass.new(block, options, @grid, table_name, main_table, custom_filter, @view, @values)
 
       vc.negation = options[:negation] if vc.respond_to? :negation=
 

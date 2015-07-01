@@ -1,3 +1,15 @@
-//= require wice_grid_processor
-//= require wice_grid_init
-//= require wice_grid_saved_queries_init
+
+$(function(){
+	$('input[type=text]').on('keyup', function(e) {
+		if (e.which == 13) {
+			$(this).closest('form').submit();	
+		}
+	});
+	$('input:not([type="text"]), select').change(function(){
+		$(this).closest('form').submit();
+	});
+	$('.datetimepicker').each(function(){
+		$(this).datetimepicker();
+	});
+});
+
