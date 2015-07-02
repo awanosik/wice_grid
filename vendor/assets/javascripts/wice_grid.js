@@ -5,7 +5,7 @@ $(function(){
 			$(this).closest('form').submit();	
 		}
 	});
-	$('.wice_grid_form input:not([type="text"]), select').change(function(){
+	$('.wice_grid_form input:not([type="text"]),.wice_grid_form select').change(function(){
 		$(this).closest('form').submit();
 	});
 	$('.datetimepicker').each(function(){
